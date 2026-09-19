@@ -1,0 +1,5 @@
+@extends('layouts.app')
+@section('title', $service['title'].' — ACI Informatique')
+@section('content')
+<section class="service-page section-space"><div class="container"><a class="text-link" href="{{ route('home') }}#expertises">← Toutes nos expertises</a><p class="eyebrow mt-5">ACI INFORMATIQUE / NOS SOLUTIONS</p><h1>{{ $service['title'] }}</h1><p class="lead-copy">{{ $service['short'] }}</p><div class="detail-grid"><img src="{{ asset('images/'.$service['image'].'.webp') }}" alt="{{ $service['title'] }}"><div><h2>Un accompagnement concret.</h2><p>{{ $service['description'] }}</p><ul class="deliverables">@foreach($service['items'] as $item)<li>{{ $item }}</li>@endforeach</ul><p class="detail-price">@if($service['price'])<small>À partir de</small> {{ $service['price'] }} {{ $service['period'] }}@else Sur devis @endif</p><p>Tarif indicatif. Une proposition définitive est établie après analyse de votre besoin.</p><a class="submit-btn" href="{{ route('home', ['service' => $slug]) }}#contact">Demander un devis <span>↗</span></a></div></div></div></section>
+@endsection

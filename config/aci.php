@@ -1,0 +1,13 @@
+<?php
+
+return [
+    'email' => env('ACI_EMAIL'),
+    'phone' => env('ACI_PHONE'),
+    'services' => [
+        'cloud' => ['title' => 'Microsoft 365 & Cloud', 'short' => 'Travaillez ensemble, où que vous soyez.', 'description' => 'Une messagerie professionnelle et des outils cloud bien configurés pour une équipe plus productive.', 'price' => '150 000', 'period' => 'FCFA', 'image' => '2017', 'items' => ['Création et administration des comptes Microsoft 365', 'Migration de la messagerie professionnelle', 'Déploiement de Teams, OneDrive et SharePoint', 'Gestion des licences et accompagnement à l’adoption', 'Microsoft Copilot selon vos besoins', 'Sécurisation des accès']],
+        'reseaux' => ['title' => 'Systèmes & réseaux', 'short' => 'Une infrastructure sur laquelle compter.', 'description' => 'Des postes, des serveurs et un réseau administrés pour soutenir votre activité au quotidien.', 'price' => '100 000', 'period' => 'FCFA / mois', 'image' => '118', 'items' => ['Installation et configuration de serveurs et postes', 'Active Directory et gestion des droits d’accès', 'Configuration des équipements réseau', 'Supervision de l’infrastructure', 'Maintenance préventive et corrective']],
+        'securite' => ['title' => 'Cybersécurité', 'short' => 'Protégez ce qui fait votre entreprise.', 'description' => 'Identifiez vos risques et renforcez la protection de vos accès, de vos données et de votre activité.', 'price' => '250 000', 'period' => 'FCFA', 'image' => '1960', 'items' => ['Audit de sécurité du système d’information', 'Authentification multifacteur (MFA)', 'Contrôle d’accès conditionnel', 'Sauvegarde et recommandations de continuité', 'Sensibilisation aux risques numériques']],
+        'support' => ['title' => 'Assistance & support', 'short' => 'Votre informatique, entre de bonnes mains.', 'description' => 'Un accompagnement de proximité pour résoudre les difficultés et faciliter le travail de vos utilisateurs.', 'price' => '75 000', 'period' => 'FCFA / mois', 'image' => '120987', 'items' => ['Support aux utilisateurs', 'Dépannage matériel et logiciel', 'Assistance à distance et interventions sur site', 'Contrats de maintenance adaptés à votre organisation']],
+        'collaboration' => ['title' => 'Collaboration & automatisation', 'short' => 'Moins de tâches répétitives. Plus d’efficacité.', 'description' => 'Structurez vos documents et simplifiez vos processus avec les outils collaboratifs Microsoft.', 'price' => null, 'period' => 'Sur devis', 'image' => '123652', 'items' => ['Teams, SharePoint Online et OneDrive Entreprise', 'Power Platform et automatisation de processus', 'Organisation documentaire', 'Accompagnement à la collaboration']],
+    ],
+];
