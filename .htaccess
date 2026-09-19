@@ -1,0 +1,20 @@
+# Hostinger Git deployment: repository installed in public_html.
+# Serve only public/; never bypass this rewrite for existing repository files.
+Options -Indexes -MultiViews
+DirectoryIndex index.php
+
+RewriteEngine On
+
+# Deny hidden files (including .env and .git), except ACME challenges.
+RewriteRule (^|/)\.(?!well-known(?:/|$)) - [F,L,NC]
+
+# Application internals are not web resources.
+RewriteRule ^(?:app|bootstrap|config|database|resources|routes|storage|tests|vendor)(?:/|$) - [F,L,NC]
+RewriteRule ^(?:artisan|composer\.(?:json|lock)|package(?:-lock)?\.json|phpunit\.xml|vite\.config\.js|README\.md|AGENTS\.md|CLAUDE\.md|boost\.json)$ - [F,L,NC]
+
+# Keep certificate renewal files reachable.
+RewriteRule ^\.well-known/acme-challenge/ - [L]
+
+# Requests rewritten into public/ are handled by public/.htaccess.
+RewriteRule ^public(?:/|$) - [L]
+RewriteRule ^(.*)$ public/$1 [L]
