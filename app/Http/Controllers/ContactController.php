@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\QuoteRequestReceived;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
+use Throwable;
 
 class ContactController extends Controller
 {
@@ -30,7 +34,7 @@ class ContactController extends Controller
             'website.max' => 'Votre demande ne peut pas être envoyée.',
         ], ['name' => 'nom', 'email' => 'e-mail', 'service' => 'besoin', 'message' => 'projet']);
 
-        DB::table('contact_requests')->insert([
+        $requestId = DB::table('contact_requests')->insertGetId([
             'name' => $validated['name'],
             'organization' => $validated['organization'] ?? null,
             'email' => $validated['email'],
@@ -41,6 +45,21 @@ class ContactController extends Controller
             'created_at' => now(),
             'updated_at' => now(),
         ]);
+
+        try {
+            $recipient = config('aci.email');
+            if (! filter_var($recipient, FILTER_VALIDATE_EMAIL)) {
+                throw new \RuntimeException('Missing quote recipient');
+            }
+            Mail::to($recipient)->send(new QuoteRequestReceived($validated, $requestId));
+        } catch (Throwable $exception) {
+            Log::warning('Quote email delivery failed; request remains saved.', [
+                'request_id' => $requestId,
+                'exception_type' => $exception::class,
+            ]);
+
+            return redirect(route('home').'#contact')->with('warning', 'Votre demande n° '.$requestId.' est enregistrée, mais la notification par e-mail n’a pas pu être envoyée. Vous pouvez nous contacter directement par téléphone ou par e-mail en rappelant ce numéro.');
+        }
 
         return redirect(route('home').'#contact')->with('success', 'Merci ! Votre demande a bien été enregistrée. ACI Informatique pourra vous recontacter avec les coordonnées fournies.');
     }

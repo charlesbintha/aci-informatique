@@ -15,3 +15,5 @@ a:hover{color:#526800}.nav-cta:hover{color:#171817!important}.submit-btn{color:#
 @media(prefers-reduced-motion:no-preference){.aci-hero .hero-content .hero-star{animation:shape-rotate 18s linear infinite}}
 
 .breadcrumbs{display:flex;flex-wrap:wrap;gap:12px;font-size:13px;margin-bottom:35px}.breadcrumbs a{text-decoration:underline}.service-context{max-width:850px;font-size:18px;line-height:1.8;margin-top:25px}.service-faq{max-width:850px;margin-top:70px}.service-faq h2{font-size:34px}.service-faq details{border-block:1px solid #cccfc5;margin:25px 0;padding:20px 0}.service-faq summary{font-weight:600;cursor:pointer}.service-faq p{margin-top:18px;line-height:1.8}.footer-services{display:flex;flex-wrap:wrap;gap:15px 25px;padding-bottom:30px;font-size:12px}.footer-services a:hover{text-decoration:underline}
+
+.notice.warning{background:#fff0cb;color:#604600}

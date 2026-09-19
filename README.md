@@ -32,7 +32,7 @@ php artisan aci:demandes
 php artisan aci:demandes --id=1
 ```
 
-Les coordonnées ACI et le SMTP Hostinger (port 465, SMTPS) sont préconfigurés dans `.env.example`. Renseigner `MAIL_PASSWORD` uniquement dans `.env`, puis exécuter `php artisan config:clear` et `php artisan aci:test-mail` pour envoyer un message de test. Le formulaire enregistre les demandes en base ; ses notifications automatiques restent à connecter. Aucun secret ni base locale ne doit être versionné.
+Les coordonnées ACI et le SMTP Hostinger (port 465, SMTPS) sont préconfigurés dans `.env.example`. Renseigner `MAIL_PASSWORD` uniquement dans `.env`, puis exécuter `php artisan config:clear` et `php artisan aci:test-mail` pour envoyer un message de test. Le formulaire enregistre les demandes en base puis envoie une notification HTML et texte à `ACI_EMAIL`. Le champ Reply-To permet de répondre directement au client. L’envoi est synchrone et ne nécessite ni worker ni tâche cron. En cas d’échec SMTP, la demande reste en base, le visiteur reçoit un avis et le journal conserve le numéro de la demande sans son contenu. Aucun secret ni base locale ne doit être versionné.
 
 ## Vérifier
 

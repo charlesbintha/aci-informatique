@@ -47,10 +47,10 @@
 <link rel="stylesheet" href="{{ asset('assets/lib/bootstrap/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/common-style.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
-<link rel="stylesheet" href="{{ asset('assets/css/aci.css').'?v=seo-1' }}">
+<link rel="stylesheet" href="{{ asset('assets/css/aci.css').'?v=quote-mail-1' }}">
 <script src="{{ asset('assets/lib/gsap/gsap.min.js') }}" defer></script>
 <script src="{{ asset('assets/lib/gsap/scroll-trigger.min.js') }}" defer></script>
-<script src="{{ asset('assets/js/aci.js').'?v=seo-1' }}" defer></script>
+<script src="{{ asset('assets/js/aci.js').'?v=quote-mail-1' }}" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Aller au contenu</a>
