@@ -28,7 +28,7 @@ class AciWebsiteTest extends TestCase
     public function test_valid_request_is_saved_and_redirected(): void
     {
         Mail::fake();
-        config(['aci.email' => 'oumar.sow@aci-informatique.com']);
+        config(['aci.email' => 'info@aci-informatique.com']);
         $this->post('/contact', $this->payload())->assertRedirect(route('home').'#contact')->assertSessionHas('success');
         $this->assertDatabaseHas('contact_requests', ['email' => 'client@example.com', 'service' => 'cloud']);
     }

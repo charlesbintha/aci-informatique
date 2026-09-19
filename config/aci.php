@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'email' => env('ACI_EMAIL'),
+    'email' => env('ACI_EMAIL', 'info@aci-informatique.com'),
     'phone' => env('ACI_PHONE'),
     'services' => [
         'cloud' => ['title' => 'Microsoft 365 & Cloud', 'short' => 'Travaillez ensemble, où que vous soyez.', 'description' => 'Une messagerie professionnelle et des outils cloud bien configurés pour une équipe plus productive.', 'price' => '150 000', 'period' => 'FCFA', 'image' => '2017', 'items' => ['Création et administration des comptes Microsoft 365', 'Migration de la messagerie professionnelle', 'Déploiement de Teams, OneDrive et SharePoint', 'Gestion des licences et accompagnement à l’adoption', 'Microsoft Copilot selon vos besoins', 'Sécurisation des accès']],

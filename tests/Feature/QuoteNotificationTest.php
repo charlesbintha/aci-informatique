@@ -22,14 +22,14 @@ class QuoteNotificationTest extends TestCase
     public function test_quote_is_saved_and_notified_to_aci_with_client_reply_address(): void
     {
         Mail::fake();
-        config(['aci.email' => 'oumar.sow@aci-informatique.com']);
+        config(['aci.email' => 'info@aci-informatique.com']);
 
         $this->post('/contact', $this->payload())->assertRedirect(route('home').'#contact')->assertSessionHas('success');
 
         $id = DB::table('contact_requests')->value('id');
         $this->assertDatabaseHas('contact_requests', ['email' => 'client@example.com', 'service' => 'cloud']);
         Mail::assertSent(QuoteRequestReceived::class, function (QuoteRequestReceived $mail) use ($id) {
-            return $mail->hasTo('oumar.sow@aci-informatique.com')
+            return $mail->hasTo('info@aci-informatique.com')
                 && $mail->requestId === $id
                 && $mail->envelope()->replyTo[0]->address === 'client@example.com'
                 && $mail->quote['message'] === $this->payload()['message'];
@@ -39,7 +39,7 @@ class QuoteNotificationTest extends TestCase
 
     public function test_smtp_failure_preserves_quote_and_returns_honest_notice(): void
     {
-        config(['aci.email' => 'oumar.sow@aci-informatique.com']);
+        config(['aci.email' => 'info@aci-informatique.com']);
         Mail::shouldReceive('to')->once()->andThrow(new RuntimeException('SMTP unavailable'));
         Log::spy();
 
